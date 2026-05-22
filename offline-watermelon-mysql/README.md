@@ -25,7 +25,13 @@ offline-watermelon-mysql/
 
 ## Backend
 
-1. Entre na pasta da API:
+1. Suba o MySQL com Docker:
+
+```bash
+docker compose up -d mysql
+```
+
+2. Entre na pasta da API:
 
 ```bash
 cd backend
@@ -33,9 +39,19 @@ npm install
 cp .env.example .env
 ```
 
-2. Ajuste o `.env` com usuario/senha do MySQL.
+3. Ajuste o `.env` com usuario/senha do MySQL.
 
-3. Crie as tabelas e os dados iniciais:
+Se estiver usando o `docker-compose.yml` deste projeto, use:
+
+```env
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=root
+DB_NAME=offline_watermelon
+```
+
+4. Crie as tabelas e os dados iniciais:
 
 ```bash
 npm run db:init
@@ -49,7 +65,7 @@ O seed cria:
 | `ana@empresa-norte.com` | `senha123` | Empresa Norte |
 | `bruno@empresa-sul.com` | `senha123` | Empresa Sul |
 
-4. Suba a API:
+5. Suba a API e mantenha este terminal aberto:
 
 ```bash
 npm run dev
